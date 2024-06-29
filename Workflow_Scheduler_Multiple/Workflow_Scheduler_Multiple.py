@@ -1340,7 +1340,8 @@ print(sum(O))
 print("**************************************************")
 
 print("Node count =", Node_num)
-print("makespan =", float(time_end - time_start))
+makespan = float(time_end - time_start)
+print("makespan =", makespan)
 print("average workflow wait time = ", awt / len(Workflow_list))
 print("average workflow slowdown = ", ast / len(Workflow_list))
 sump = 0
