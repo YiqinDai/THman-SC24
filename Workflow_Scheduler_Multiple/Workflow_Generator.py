@@ -1,5 +1,6 @@
 import random
 import time
+import os
 
 all_index = 0
 workflow_count = 40
@@ -19,6 +20,23 @@ class task:
 
 batch_flag = -1
 task_list = []
+
+
+def delete_files_in_directory(directory):
+    for filename in os.listdir(directory):
+        file_path = os.path.join(directory, filename)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)  # 删除文件
+            # 如果需要删除子目录中的文件，可以添加递归删除子目录的代码
+            # elif os.path.isdir(file_path):
+            #     shutil.rmtree(file_path)  # 递归删除目录及其内容
+        except Exception as e:
+            print(f"Failed to delete {file_path}. Reason: {e}")
+
+# 调用函数删除指定目录下的所有文件
+delete_files_in_directory('Generated_Tasks/')
+
 # low I/O density
 task_list.append(task(0, 27, 1, 16, 0.13, 0.15, "lowio1"))
 task_list.append(task(1, 82, 2, 32, 0.7, 0.6, "lowio2"))
