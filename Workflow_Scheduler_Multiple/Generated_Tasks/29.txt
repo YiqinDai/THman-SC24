@@ -1,0 +1,23 @@
+Partition ft3k
+FSReadBandwidth 16
+FSWriteBandwidth 14
+Nodes Nodelist=cn[0-63]
+File testoriginfile0 0.13g
+File testoriginfile1 0.7g
+File testoriginfile2 1.9g
+File testoriginfile3 18g
+File testoriginfile4 72g
+File testoriginfile5 187g
+File testoriginfile6 66g
+File testoriginfile7 152g
+File testoriginfile8 380g
+File testfile0 0.01g
+Task -N 4 -n 64 -wt 125 lowio3 -wr testoriginfile2  -ww testwritefile560 1.9g -ww testfile560 0.1g
+Task -N 4 -n 64 -wt 125 lowio3 -wr testoriginfile2 -wr testfile560  -ww testwritefile561 1.9g -ww testfile561 0.1g
+Task -N 4 -n 64 -wt 97 highio3 -wr testoriginfile8 -wr testfile560 -wr testfile561  -ww testwritefile562 350g -ww testfile562 0.1g
+Task -N 2 -n 32 -wt 70 highio2 -wr testoriginfile7  -ww testwritefile563 144g -ww testfile563 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1 -wr testfile561 -wr testfile562  -ww testwritefile564 0.6g -ww testfile564 0.1g
+Task -N 4 -n 64 -wt 125 lowio3 -wr testoriginfile2  -ww testwritefile565 1.9g -ww testfile565 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1  -ww testwritefile566 0.6g -ww testfile566 0.1g
+Task -N 4 -n 64 -wt 125 lowio3 -wr testoriginfile2 -wr testfile564 -wr testfile566  -ww testwritefile567 1.9g -ww testfile567 0.1g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3 -wr testfile566 -wr testfile567  -ww testwritefile568 18g -ww testfile568 0.1g

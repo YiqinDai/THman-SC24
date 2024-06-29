@@ -1,0 +1,40 @@
+Partition ft3k
+FSReadBandwidth 16
+FSWriteBandwidth 14
+Nodes Nodelist=cn[0-63]
+File testoriginfile0 0.13g
+File testoriginfile1 0.7g
+File testoriginfile2 1.9g
+File testoriginfile3 18g
+File testoriginfile4 72g
+File testoriginfile5 187g
+File testoriginfile6 66g
+File testoriginfile7 152g
+File testoriginfile8 380g
+File testfile0 0.01g
+Task -N 4 -n 64 -wt 125 lowio3 -wr testoriginfile2  -ww testwritefile124 1.9g -ww testfile124 0.1g
+Task -N 4 -n 64 -wt 125 lowio3 -wr testoriginfile2  -ww testwritefile125 1.9g -ww testfile125 0.1g
+Task -N 4 -n 64 -wt 97 highio3 -wr testoriginfile8  -ww testwritefile126 350g -ww testfile126 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0  -ww testwritefile127 0.15g -ww testfile127 0.1g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3  -ww testwritefile128 18g -ww testfile128 0.1g
+Task -N 2 -n 32 -wt 70 highio2 -wr testoriginfile7  -ww testwritefile129 144g -ww testfile129 0.1g
+Task -N 4 -n 64 -wt 125 lowio3 -wr testoriginfile2  -ww testwritefile130 1.9g -ww testfile130 0.1g
+Task -N 2 -n 32 -wt 82 mediumio2 -wr testoriginfile4 -wr testfile128  -ww testwritefile131 72g -ww testfile131 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1  -ww testwritefile132 0.6g -ww testfile132 0.1g
+Task -N 2 -n 32 -wt 82 mediumio2 -wr testoriginfile4 -wr testfile127  -ww testwritefile133 72g -ww testfile133 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0  -ww testwritefile134 0.15g -ww testfile134 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1  -ww testwritefile135 0.6g -ww testfile135 0.1g
+Task -N 4 -n 64 -wt 125 lowio3 -wr testoriginfile2  -ww testwritefile136 1.9g -ww testfile136 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0  -ww testwritefile137 0.15g -ww testfile137 0.1g
+Task -N 1 -n 16 -wt 15 highio1 -wr testoriginfile6 -wr testfile124 -wr testfile125  -ww testwritefile138 60g -ww testfile138 0.1g
+Task -N 1 -n 16 -wt 15 highio1 -wr testoriginfile6  -ww testwritefile139 60g -ww testfile139 0.1g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3 -wr testfile128 -wr testfile132  -ww testwritefile140 18g -ww testfile140 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1 -wr testfile133 -wr testfile135  -ww testwritefile141 0.6g -ww testfile141 0.1g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3 -wr testfile134  -ww testwritefile142 18g -ww testfile142 0.1g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3 -wr testfile139  -ww testwritefile143 18g -ww testfile143 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0 -wr testfile127  -ww testwritefile144 0.15g -ww testfile144 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0 -wr testfile129 -wr testfile136  -ww testwritefile145 0.15g -ww testfile145 0.1g
+Task -N 4 -n 64 -wt 156 mediumio3 -wr testoriginfile5 -wr testfile128  -ww testwritefile146 187g -ww testfile146 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0 -wr testfile132  -ww testwritefile147 0.15g -ww testfile147 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1 -wr testfile124 -wr testfile127  -ww testwritefile148 0.6g -ww testfile148 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1 -wr testfile136 -wr testfile143 -wr testfile144  -ww testwritefile149 0.6g -ww testfile149 0.1g

@@ -1,0 +1,19 @@
+Partition ft3k
+FSReadBandwidth 16
+FSWriteBandwidth 14
+Nodes Nodelist=cn[0-63]
+File testoriginfile0 0.13g
+File testoriginfile1 0.7g
+File testoriginfile2 1.9g
+File testoriginfile3 18g
+File testoriginfile4 72g
+File testoriginfile5 187g
+File testoriginfile6 66g
+File testoriginfile7 152g
+File testoriginfile8 380g
+File testfile0 0.01g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3  -ww testwritefile582 18g -ww testfile582 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1 -wr testfile582  -ww testwritefile583 0.6g -ww testfile583 0.1g
+Task -N 2 -n 32 -wt 70 highio2 -wr testoriginfile7 -wr testfile583  -ww testwritefile584 144g -ww testfile584 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0 -wr testfile584  -ww testwritefile585 0.15g -ww testfile585 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0  -ww testwritefile586 0.15g -ww testfile586 0.1g

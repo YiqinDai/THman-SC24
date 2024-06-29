@@ -1,0 +1,33 @@
+Partition ft3k
+FSReadBandwidth 16
+FSWriteBandwidth 14
+Nodes Nodelist=cn[0-63]
+File testoriginfile0 0.13g
+File testoriginfile1 0.7g
+File testoriginfile2 1.9g
+File testoriginfile3 18g
+File testoriginfile4 72g
+File testoriginfile5 187g
+File testoriginfile6 66g
+File testoriginfile7 152g
+File testoriginfile8 380g
+File testfile0 0.01g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0  -ww testwritefile484 0.15g -ww testfile484 0.1g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3  -ww testwritefile485 18g -ww testfile485 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0 -wr testfile484  -ww testwritefile486 0.15g -ww testfile486 0.1g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3  -ww testwritefile487 18g -ww testfile487 0.1g
+Task -N 4 -n 64 -wt 125 lowio3 -wr testoriginfile2  -ww testwritefile488 1.9g -ww testfile488 0.1g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3  -ww testwritefile489 18g -ww testfile489 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1  -ww testwritefile490 0.6g -ww testfile490 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0 -wr testfile489  -ww testwritefile491 0.15g -ww testfile491 0.1g
+Task -N 1 -n 16 -wt 25 mediumio1 -wr testoriginfile3 -wr testfile490 -wr testfile491  -ww testwritefile492 18g -ww testfile492 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1 -wr testfile490  -ww testwritefile493 0.6g -ww testfile493 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1 -wr testfile486 -wr testfile489 -wr testfile490  -ww testwritefile494 0.6g -ww testfile494 0.1g
+Task -N 2 -n 32 -wt 82 mediumio2 -wr testoriginfile4 -wr testfile494  -ww testwritefile495 72g -ww testfile495 0.1g
+Task -N 2 -n 32 -wt 70 highio2 -wr testoriginfile7 -wr testfile487  -ww testwritefile496 144g -ww testfile496 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1 -wr testfile487 -wr testfile495  -ww testwritefile497 0.6g -ww testfile497 0.1g
+Task -N 4 -n 64 -wt 156 mediumio3 -wr testoriginfile5  -ww testwritefile498 187g -ww testfile498 0.1g
+Task -N 2 -n 32 -wt 82 lowio2 -wr testoriginfile1 -wr testfile485 -wr testfile493 -wr testfile496 -wr testfile497  -ww testwritefile499 0.6g -ww testfile499 0.1g
+Task -N 2 -n 32 -wt 82 mediumio2 -wr testoriginfile4 -wr testfile489  -ww testwritefile500 72g -ww testfile500 0.1g
+Task -N 1 -n 16 -wt 27 lowio1 -wr testoriginfile0 -wr testfile498  -ww testwritefile501 0.15g -ww testfile501 0.1g
+Task -N 4 -n 64 -wt 97 highio3 -wr testoriginfile8 -wr testfile490 -wr testfile492 -wr testfile499  -ww testwritefile502 350g -ww testfile502 0.1g
