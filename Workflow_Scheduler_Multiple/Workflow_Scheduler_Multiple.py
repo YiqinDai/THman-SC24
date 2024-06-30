@@ -1347,5 +1347,5 @@ print("average workflow slowdown = ", ast / len(Workflow_list))
 sump = 0
 for i in range(len(p)):
     sump += p[i] * w[i]
-print("resource utilization = ", (makespan * Node_num) / sump)
+print("resource utilization = ",  sump / (makespan * Node_num))
 
