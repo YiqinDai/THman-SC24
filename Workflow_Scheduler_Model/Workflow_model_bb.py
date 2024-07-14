@@ -436,6 +436,7 @@ def bb_dynamic(i):
 
 
 def bb_compare(i):
+    global R_f
     global W_f
     global BB
     global I
@@ -490,19 +491,19 @@ def bb_compare(i):
         if rFI_tmp == 0:
             t2 = 0
         else:
-            t2 = FI_tmp / min(rFI_tmp, R_f / (np.mean(p) / P))
+            t2 = FI_tmp / min(rFI_tmp, R_f / (P / p[i]))
         if rBI_tmp == 0:
             t3 = 0
         else:
-            t3 = BI_tmp / min(rBI_tmp, R_b / (np.mean(p) / P))
+            t3 = BI_tmp / min(rBI_tmp, R_b / (P / p[i]))
         if rO_tmp == 0:
             t4 = 0
         else:
-            t4 = O[i] / min(rO_tmp, W_f / (np.mean(p) / P))
+            t4 = O[i] / min(rO_tmp, W_f / (P / p[i]))
         if rO_tmp == 0:
             t5 = 0
         else:
-            t5 = O[i] / min(rO_tmp, W_b / (np.mean(p) / P))
+            t5 = O[i] / min(rO_tmp, W_b / (P / p[i]))
         t_with = max(t1, t2, t3, t5)
         t_without = max(t1, t2, t3, t4)
 
@@ -1063,9 +1064,9 @@ fig = plt.figure(figsize=(70, 16))
 ax10 = fig.add_subplot(1, 3, 1)
 ax11 = fig.add_subplot(1, 3, 2)
 ax12 = fig.add_subplot(1, 3, 3)
-ax10.set_ylim(0.9, 1.01)
+ax10.set_ylim(0.91, 1.01)
 ax11.set_ylim(0.86, 1.01)
-ax12.set_ylim(0.80, 1.01)
+ax12.set_ylim(0.86, 1.01)
 
 
 
@@ -1108,20 +1109,20 @@ for i in range(0, len(myccp)):
         C9.append(C9_tmp[i])
         C10.append(C10_tmp[i])
         x += 0.1
-        if x >= 2.5:
+        if x >= 2.2:
             break
 print(len(C1))
-C1 = gaussian_filter1d(C1, sigma=2)
-C2 = gaussian_filter1d(C2, sigma=2)
-C3 = gaussian_filter1d(C3, sigma=2)
-C4 = gaussian_filter1d(C4, sigma=2)
-C5 = gaussian_filter1d(C5, sigma=2)
-C6 = gaussian_filter1d(C6, sigma=2)
-C7 = gaussian_filter1d(C7, sigma=2)
-C8 = gaussian_filter1d(C8, sigma=2)
-C9 = gaussian_filter1d(C9, sigma=2)
+C1 = gaussian_filter1d(C1, sigma=3)
+C2 = gaussian_filter1d(C2, sigma=3)
+C3 = gaussian_filter1d(C3, sigma=3)
+C4 = gaussian_filter1d(C4, sigma=3)
+C5 = gaussian_filter1d(C5, sigma=3)
+C6 = gaussian_filter1d(C6, sigma=3)
+C7 = gaussian_filter1d(C7, sigma=3)
+C8 = gaussian_filter1d(C8, sigma=3)
+C9 = gaussian_filter1d(C9, sigma=3)
 
-x = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4]
+x = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1]
 
 ax10.plot(x, C1, label="Baseline + Baseline", linestyle='-', linewidth=4, marker='^', markersize=20, color='#6D5C3D')
 ax10.plot(x, C2, label="Baseline + SBA", linestyle='-', linewidth=4, marker='o', markersize=15, color='#A64036')
@@ -1145,7 +1146,7 @@ ax10x.set_yticks([])
 ax10x.set_zorder(1)
 ax10x.set_ylim(0, 2400)
 ax10x.bar(x, C10, 0.07, color='#E3D599')
-ax10x.tick_params(labelsize=65)
+ax10x.tick_params(labelsize=75)
 
 C1 = []
 C2 = []
@@ -1184,28 +1185,28 @@ for i in range(0, len(myccp)):
         C9.append(C9_tmp[i])
         C10.append(C10_tmp[i])
         x += 0.1
-        if x >= 2.5:
+        if x >= 2.2:
             break
 print(len(C1))
-C1 = gaussian_filter1d(C1, sigma=2)
-C2 = gaussian_filter1d(C2, sigma=2)
-C3 = gaussian_filter1d(C3, sigma=2)
-C4 = gaussian_filter1d(C4, sigma=2)
-C5 = gaussian_filter1d(C5, sigma=2)
-C6 = gaussian_filter1d(C6, sigma=2)
-C7 = gaussian_filter1d(C7, sigma=2)
-C8 = gaussian_filter1d(C8, sigma=2)
-C9 = gaussian_filter1d(C9, sigma=2)
-x = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4]
-C1 = gaussian_filter1d(C1, sigma=2)
-C2 = gaussian_filter1d(C2, sigma=2)
-C3 = gaussian_filter1d(C3, sigma=2)
-C4 = gaussian_filter1d(C4, sigma=2)
-C5 = gaussian_filter1d(C5, sigma=2)
-C6 = gaussian_filter1d(C6, sigma=2)
-C7 = gaussian_filter1d(C7, sigma=2)
-C8 = gaussian_filter1d(C8, sigma=2)
-C9 = gaussian_filter1d(C9, sigma=2)
+C1 = gaussian_filter1d(C1, sigma=3)
+C2 = gaussian_filter1d(C2, sigma=3)
+C3 = gaussian_filter1d(C3, sigma=3)
+C4 = gaussian_filter1d(C4, sigma=3)
+C5 = gaussian_filter1d(C5, sigma=3)
+C6 = gaussian_filter1d(C6, sigma=3)
+C7 = gaussian_filter1d(C7, sigma=3)
+C8 = gaussian_filter1d(C8, sigma=3)
+C9 = gaussian_filter1d(C9, sigma=3)
+x = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1]
+# C1 = gaussian_filter1d(C1, sigma=2)
+# C2 = gaussian_filter1d(C2, sigma=2)
+# C3 = gaussian_filter1d(C3, sigma=2)
+# C4 = gaussian_filter1d(C4, sigma=2)
+# C5 = gaussian_filter1d(C5, sigma=2)
+# C6 = gaussian_filter1d(C6, sigma=2)
+# C7 = gaussian_filter1d(C7, sigma=2)
+# C8 = gaussian_filter1d(C8, sigma=2)
+# C9 = gaussian_filter1d(C9, sigma=2)
 ax11.plot(x, C1, label="Baseline + Baseline", linestyle='-', linewidth=4, marker='^', markersize=20, color='#6D5C3D')
 ax11.plot(x, C2, label="Baseline + SBA", linestyle='-', linewidth=4, marker='o', markersize=15, color='#A64036')
 ax11.plot(x, C4, label="HEFT + Baseline", linestyle='-', linewidth=4, marker='s', markersize=15, color='#2E59A7')
@@ -1227,7 +1228,7 @@ ax11x.set_ylim(0, 2400)
 ax11x.set_yticks([])
 ax11x.bar(x, C10, 0.07, color='#E3D599')
 ax11.legend(fontsize=20)
-ax11.tick_params(labelsize=75)
+ax11.tick_params(labelsize=65)
 
 C1 = []
 C2 = []
@@ -1267,20 +1268,20 @@ for i in range(0, len(myccp)):
         C9.append(C9_tmp[i])
         C10.append(C10_tmp[i])
         x += 0.1
-        if x >= 2.5:
+        if x >= 2.2:
             break
 print(len(C1))
-C1 = gaussian_filter1d(C1, sigma=2)
-C2 = gaussian_filter1d(C2, sigma=2)
-C3 = gaussian_filter1d(C3, sigma=2)
-C4 = gaussian_filter1d(C4, sigma=2)
-C5 = gaussian_filter1d(C5, sigma=2)
-C6 = gaussian_filter1d(C6, sigma=2)
-C7 = gaussian_filter1d(C7, sigma=2)
-C8 = gaussian_filter1d(C8, sigma=2)
-C9 = gaussian_filter1d(C9, sigma=2)
+C1 = gaussian_filter1d(C1, sigma=3)
+C2 = gaussian_filter1d(C2, sigma=3)
+C3 = gaussian_filter1d(C3, sigma=3)
+C4 = gaussian_filter1d(C4, sigma=3)
+C5 = gaussian_filter1d(C5, sigma=3)
+C6 = gaussian_filter1d(C6, sigma=3)
+C7 = gaussian_filter1d(C7, sigma=3)
+C8 = gaussian_filter1d(C8, sigma=3)
+C9 = gaussian_filter1d(C9, sigma=3)
 
-x = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4]
+x = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1]
 
 ax12.plot(x, C1, label="Baseline + Baseline", linestyle='-', linewidth=4, marker='^', markersize=20, color='#6D5C3D')
 ax12.plot(x, C2, label="Baseline + SBA", linestyle='-', linewidth=4, marker='o', markersize=15, color='#A64036')
@@ -1306,11 +1307,11 @@ ax12x.bar(x, C10, 0.07, color='#E3D599', label='Absolute makespan of Baseline + 
 # ax12x.set_yticklabels([0, 10, 20, 30, 40], fontsize=18)
 ax12x.set_ylabel("Absolute \n Makespan (s)", fontsize=75)
 ax12x.tick_params(labelsize=65)
-ax12.tick_params(labelsize=75)
+ax12.tick_params(labelsize=65)
 
 ax11.legend(fontsize=75, ncol=6, bbox_to_anchor=(0.5, 1.25), loc='upper center')
 # ax12x.legend(fontsize=65, ncol=6, bbox_to_anchor=(0.0, 1.23))
-fig.subplots_adjust(left=0.08, right=0.93, bottom=0.16, top=0.85, wspace=0.06, hspace=0.45)
+fig.subplots_adjust(left=0.08, right=0.93, bottom=0.16, top=0.85, wspace=0.15, hspace=0.45)
 # fig.tight_layout()
 plt.show()
-# fig.savefig('C:\\Users\\戴屹钦\\Desktop\\学习\\2022学习\\SC22\\5_HPDC\\figure\\figure_new_2.eps')
+fig.savefig('C:\\Users\\戴屹钦\\Desktop\\学习\\2022学习\\SC22\\5_HPDC\\figure\\111\\figure_new_2.eps')
